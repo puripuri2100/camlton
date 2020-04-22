@@ -62,7 +62,6 @@ let overlapping_delete (f: 'a -> 'a -> bool) (lst: 'a list) =
 を受け取って最終的に真偽値を返す
 *)
 let main (q0,delta_list,target,f_lst) =
-  let _ = overlapping_delete String.equal ["a"; "b"] in
   let q_lst =(*最終的な状態の集合*)
     let rec sub (target:string list) (lst:string list) =(*文字のリストと状態のリストを受け取る*)
       match target with
