@@ -1,0 +1,23 @@
+opam-version: "2.0"
+version: "0.1.0"
+maintainer: "puripuri2100"
+authors: ["puripuri2100"]
+synopsis: "OCamlによる非決定性有限オートマトンの実装"
+description: """
+OCamlによる非決定性有限オートマトンの実装
+"""
+license: "MIT"
+tags: []
+homepage: "https://github.com/puripuri2100/camlton"
+bug-reports: "https://github.com/puripuri2100/camlton/issues"
+depends: [
+  "ocaml" {>= "4.06.0"}
+  "yojson"
+]
+build: [
+  [make "-f" "Makefile" "build" "PREFIX=%{prefix}%"]
+]
+install: [
+  [make "-f" "Makefile" "install" "PREFIX=%{prefix}%"]
+]
+dev-repo: "git+https://github.com/puripuri2100/camlton.git"
