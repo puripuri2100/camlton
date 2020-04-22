@@ -1,0 +1,24 @@
+PREFIX=/usr/local
+TARGET=camlton
+BINDIR=$(PREFIX)/bin
+BUILD=__build
+
+
+.PHONY: build install uninstall clean
+
+build: src
+	-mkdir ${BUILD}
+	cp src/*.ml src/*.mli ${BUILD}
+	cd ${BUILD} && ocamlfind ocamlopt -o ${TARGET} -linkpkg -package "yojson" error.mli error.ml readJson.mli readJson.ml optionState.mli optionState.ml camlton.ml main.ml
+	cp ${BUILD}/${TARGET} ./
+
+install: ${TARGET}
+	mkdir -p $(BINDIR)
+	install $(TARGET) $(BINDIR)
+
+uninstall:
+	rm -rf $(BINDIR)/$(TARGET)
+
+
+clean:
+	@rm -rf *.cmi *.cmx *.cmo *.o *.out ${BUILD} ${TARGET}
