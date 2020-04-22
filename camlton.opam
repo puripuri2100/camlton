@@ -13,6 +13,7 @@ bug-reports: "https://github.com/puripuri2100/camlton/issues"
 depends: [
   "ocaml" {>= "4.10.0"}
   "yojson"
+  "ocamlfind"
 ]
 build: [
   [make "-f" "Makefile" "build" "PREFIX=%{prefix}%"]

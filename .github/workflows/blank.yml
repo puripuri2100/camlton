@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [macos-latest, ubuntu-latest]
-        ocaml-version: [ '4.10.0' ]
+        ocaml-version: [ '4.10.0' , '4.09.0']
     steps:
     - uses: actions/checkout@master
     - uses: avsm/setup-ocaml@master
