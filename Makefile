@@ -9,7 +9,7 @@ BUILD=__build
 build: src
 	-mkdir ${BUILD}
 	cp src/*.ml src/*.mli ${BUILD}
-	cd ${BUILD} && ocamlfind ocamlopt -o ${TARGET} -linkpkg -package "yojson" error.mli error.ml readJson.mli readJson.ml optionState.mli optionState.ml camlton.ml main.ml
+	cd ${BUILD} && ocamlfind ocamlopt -o ${TARGET} -linkpkg -package "yojson" error.mli error.ml readJson.mli readJson.ml optionState.mli optionState.ml camlton.mli camlton.ml main.ml
 	cp ${BUILD}/${TARGET} ./
 
 install: ${TARGET}
