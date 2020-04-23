@@ -4,7 +4,7 @@ BINDIR=$(PREFIX)/bin
 BUILD=__build
 
 
-.PHONY: build install uninstall clean example
+.PHONY: build install uninstall clean example test
 
 build: src
 	-mkdir ${BUILD}
@@ -22,6 +22,9 @@ uninstall:
 
 example:
 	camlton -c example/example1.json
+
+test:
+	./camlton -c test/1.json
 
 clean:
 	@rm -rf *.cmi *.cmx *.cmo *.o *.out ${BUILD} ${TARGET}
