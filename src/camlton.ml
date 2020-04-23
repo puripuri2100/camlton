@@ -60,10 +60,18 @@ let rec f_epsilon (delta_lst: (string * string * string list) list) (q:string) =
       |> List.concat
       |> overlapping_delete String.equal
     in
-    match q_lst with (*作成したεで遷移できる先のリストをチェックする*)
-    | [] -> lst (*遷移先が無い*)
-    | x -> (*遷移先がまだある*)
+    let len_old_lst = List.length lst in (*遷移確定のリスト*)
+    let new_lst =(*新規に遷移することがわかったリストを結合して重複を省く*)
+      List.append lst q_lst
+      |> overlapping_delete String.equal
+    in
+    let len_new_lst = List.length new_lst in
+    if len_new_lst > len_old_lst then(*作成したεで遷移できる先のリストをチェックする*)
+      (*遷移先がまだある*)
       List.append lst (sub q_lst) (*既存の遷移先と新たな遷移先を結合*)
+    else
+      (*新規遷移先無し*)
+      lst
   in
   sub [q]
 
