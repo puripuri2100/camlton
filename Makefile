@@ -25,6 +25,7 @@ example:
 
 test:
 	./camlton -c test/1.json
+	./camlton -c test/2.json
 
 clean:
 	@rm -rf *.cmi *.cmx *.cmo *.o *.out ${BUILD} ${TARGET}
