@@ -27,10 +27,11 @@ let rec f1 (delta_lst: (string * string * string list) list) (key:string) (q:str
     |> List.concat
   in
   let epsilon_after_lst =
+    let epsilon = "" in
     let f (b,k,_) =
       String.equal b q (*移動前の状態名のチェック*)
       &&
-      String.equal k "" (*εであるかのチェック*)
+      String.equal k epsilon (*εであるかのチェック*)
     in
     delta_lst
     |> List.filter f
