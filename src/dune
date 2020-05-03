@@ -2,8 +2,6 @@
  (name main)
  (public_name camlton)
  (flags (-w -3 -bin-annot -thread -safe-string))
- (libraries core_kernel
-            yojson
-            )
+ (libraries  yojson)
  )
 
