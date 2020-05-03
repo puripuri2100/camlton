@@ -1,16 +1,14 @@
 PREFIX=/usr/local
 TARGET=camlton
 BINDIR=$(PREFIX)/bin
-BUILD=__build
+BUILD=_build
 
 
 .PHONY: build install uninstall clean example test
 
 build: src
-	-mkdir ${BUILD}
-	cp src/*.ml src/*.mli ${BUILD}
-	cd ${BUILD} && ocamlfind ocamlopt -o ${TARGET} -linkpkg -package "yojson" error.mli error.ml readJson.mli readJson.ml optionState.mli optionState.ml camlton.mli camlton.ml main.ml
-	cp ${BUILD}/${TARGET} ./
+	dune build src/main.exe
+	cp ${BUILD}/default/src/main.exe ./${TARGET}
 
 install: ${TARGET}
 	mkdir -p $(BINDIR)
