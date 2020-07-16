@@ -1,6 +1,6 @@
 name: CI
 
-on: [push,pull_request]
+on: [push, pull_request]
 
 jobs:
   run:
@@ -9,12 +9,12 @@ jobs:
     strategy:
       matrix:
         operating-system: [macos-latest, ubuntu-latest]
-        ocaml-version: [ '4.10.0' , '4.09.0']
+        ocaml-version: ["4.10.0", "4.09.0"]
     steps:
-    - uses: actions/checkout@master
-    - uses: avsm/setup-ocaml@master
-      with:
-        ocaml-version: ${{ matrix.ocaml-version }}
-    - run: opam pin add camlton.dev -n .
-    - run: opam depext -yt camlton
-    - run: opam install -t .
+      - uses: actions/checkout@v2
+      - uses: avsm/setup-ocaml@v1
+        with:
+          ocaml-version: ${{ matrix.ocaml-version }}
+      - run: opam pin add camlton.dev -n .
+      - run: opam depext -yt camlton
+      - run: opam install -t .
